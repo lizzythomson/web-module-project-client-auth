@@ -24,6 +24,38 @@
   color: white;
 }
 
+.login-container {
+  display: flex;
+  flex-direction: column;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 12px;
+}
+
+.link-container {
+  align-self: center;
+  padding: 18px;
+}
+
+.link {
+  margin: 8px;
+}
+
 .App-link {
   color: #61dafb;
 }
