@@ -3,13 +3,12 @@ import { Route, Redirect } from 'react-router-dom';
 
 const PrivateRoute = (props) => {
   const { component: Component, redirectTo = '/', ...rest } = props;
-
   return (
     <Route
       {...rest}
-      render={() => {
+      render={(routerProps) => {
         if (localStorage.getItem('token')) {
-          return <Component />;
+          return <Component {...routerProps} />;
         } else {
           return <Redirect to={redirectTo} />;
         }
