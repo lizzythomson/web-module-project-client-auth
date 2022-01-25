@@ -5,6 +5,7 @@ import { Route, Link, Redirect } from 'react-router-dom';
 import Login from './components/Login';
 import FriendsList from './components/FriendsList';
 import AddFriend from './components/AddFriends';
+import Logout from './components/Logout';
 
 import PrivateRoute from './components/PrivateRoute';
 
@@ -43,6 +44,7 @@ function App() {
         component={AddFriend}
         redirectTo='/login'
       />
+      <Route path='/logout' component={Logout} />
     </div>
   );
 }
