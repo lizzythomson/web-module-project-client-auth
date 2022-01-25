@@ -29,6 +29,11 @@
   flex-direction: column;
 }
 
+.add-friend-container {
+  display: flex;
+  flex-direction: column;
+}
+
 form {
   display: flex;
   flex-direction: column;

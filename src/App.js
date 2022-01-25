@@ -1,36 +1,49 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Route, Link, Redirect } from 'react-router-dom';
 
 import Login from './components/Login';
 import FriendsList from './components/FriendsList';
+import AddFriend from './components/AddFriends';
+
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
+  const isLoggedIn = localStorage.getItem('token');
   return (
-    <Router>
-      <div className='App'>
-        <header>
-          <h3>FRIENDS DATABASE</h3>
-          <div className='link-container'>
-            <Link className='link' to='/login'>
-              LOGIN
-            </Link>
-            <Link className='link' to='/friendlist'>
-              FRIENDLIST
-            </Link>
-            <Link className='link' to='/addfriend'>
-              ADDFRIEND
-            </Link>
-            <Link className='link' to='/logout'>
-              LOGOUT
-            </Link>
-          </div>
-        </header>
-        <Route exact path='/' component={Login} />
-        <Route path='/login' component={Login} />
-        <Route path='/friendlist' component={FriendsList} />
-      </div>
-    </Router>
+    <div className='App'>
+      <header>
+        <h3>FRIENDS DATABASE</h3>
+        <div className='link-container'>
+          <Link className='link' to='/login'>
+            LOGIN
+          </Link>
+          <Link className='link' to='/friends'>
+            FRIENDLIST
+          </Link>
+          <Link className='link' to='/friends/add'>
+            ADDFRIEND
+          </Link>
+
+          <Link className='link' to='/logout'>
+            LOGOUT
+          </Link>
+        </div>
+      </header>
+      <Route exact path='/' component={Login} />
+      <Route path='/login' component={Login} />
+      <PrivateRoute
+        exact
+        path='/friends'
+        component={FriendsList}
+        redirectTo='/login'
+      />
+      <PrivateRoute
+        path='/friends/add'
+        component={AddFriend}
+        redirectTo='/login'
+      />
+    </div>
   );
 }
 
